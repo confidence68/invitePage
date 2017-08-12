@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>四海八荒的上神上仙们，你有一封快递已准时护送到，请卿亲启~</title>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <link rel="stylesheet" href="css/pageanimate.css">
+        <link rel="stylesheet" href="css/common.css">
+    </head>
+
+    <body>
+        <div class="loadingcss"></div>
+        <div id="globalshow">
+            <div style="display: none"><img src="images/icon.jpg"> </div>
+            <div class="doorkuang">
+                <div class="door"></div>
+                <div class="tophandwrap">
+                    <div class="tophand "></div>
+                    <div class="lt1hook letter1"></div>
+                </div>
+                <div class="bottomwrap">
+                    <div class="bottomhand"></div>
+                    <div class="letter1">
+                        <div class="dot dotanimate"></div>
+                        <div class="clickbtn"></div>
+                    </div>
+                    <div class="inviteletter"></div>
+                    <a class="lettercontent" href="javascript:void(0)" data-href="photo.html"></a>
+                </div>
+            </div>
+            <audio preload="auto" hidden="true" autoplay="autoplay" id="peiyin" src="media/chapter1.mp3" type="audio/mpeg"></audio>
+            <audio preload="auto" hidden="true" id="fanye" src="media/book.mp3" type="audio/mpeg"></audio>
+        </div>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $(".loadingcss").fadeOut(300);
+                setTimeout(function () {
+                    $("#globalshow").css({
+                        visibility: "visible"
+                    });
+                    $("#globalshow").find(".door").addClass("bx");
+                    // $("#peiyin")[0].play();
+                    $("#globalshow").find(".tophand").addClass("topanimate1 delay5");
+                    $("#globalshow").find(".lt1hook").addClass("topanimate delay4");
+                    $("#globalshow").find(".bottomwrap").addClass("bottomanimate delay8");
+                    $("#globalshow").find(".bottomhand").addClass("bottomanimate2 delay8");
+                    setTimeout(function () {
+                        $(".bottomwrap").on("click", ".letter1", function () {
+                            var _this = this;
+                            $(_this).hide();
+                            $(_this).next(".inviteletter").show();
+                            $(_this).parents(".doorkuang").addClass("bigclass")
+                            setTimeout(function () {
+                                $("#fanye")[0].play();
+                                var seebtn = $(_this).siblings(".lettercontent");
+                                var href = seebtn.data("href");
+                                $(_this).next(".inviteletter").addClass("fanye");
+                                seebtn.attr("href", href);
+
+
+                            }, 3500)
+
+                        })
+                    }, 9000)
+
+
+                }, 300);
+
+
+
+
+            })
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>四海八荒的上神上仙们，你有一封快递已准时护送到，请卿亲启~</title>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <link rel="stylesheet" href="css/pageanimate.css">
+        <link rel="stylesheet" href="css/common.css">
+        <style type="text/css">
+            .clicktips{position: absolute;bottom:3.2rem;left:0;right:0;margin: auto;z-index:10000;display: none;}
+            .clicktips .dot{width:.5rem;height:.5rem;background-color:#fff;border-radius: 50%;box-shadow: 0 0 0 1px #dfdfdf;position:absolute;top:1rem;right:2.6rem;opacity: .3;}
+        </style>
+    </head>
+
+    <body>
+        <div class="clicktips">
+            <div class="dot dotanimate"></div>
+            <div class="clickbtn"></div> 
+        </div>
+        <div class="actGotop" id="backtop">
+            <a href="javascript:;" title="回到首页"></a>
+        </div>                
+        <div class="commondw videoimg" id="videoimg"></div>
+        <video class="vido" id="vidoid" poster="images/photo/video.jpg" src="media/move.mp4" playsinline="true" 
+               webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="object-fit:fill"></video>
+        <script type="text/javascript" src="js/VideoToCanvas.js"></script> 
+        <script type="text/javascript">
+            $(function () {
+                $(".clicktips").fadeIn("3000");
+                $("#videoimg").one("click", function () {
+                    $(this).fadeOut(1000);
+                    $(".clicktips").hide();
+                    var canvasvedio=new VideoToCanvas(document.getElementById("vidoid"),function(){
+                        canvasvedio.hide();
+                        $("#videoimg").show();
+                        $("#backtop").addClass("clicktz").show();
+                    });
+                    canvasvedio.play();
+                });
+                $("#backtop").on("click", function () {
+                    if ($(this).hasClass("clicktz")) {
+                        $(this).addClass("fadeoutUpgo");
+                        setTimeout(function () {
+                            window.location.href = "index.html";
+                        }, 2000)
+                    }
+                })
+            })
+        </script>
+
+    </body>
+
+</html>
